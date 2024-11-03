@@ -31,19 +31,19 @@ function createBoxes(amount) {
   for (let i = 0; i < amount; i++) {
     // 1 варіант
 
-    // const newBox = document.createElement('div');
-    // newBox.style.width = `${size}px`;
-    // newBox.style.height = `${size}px`;
-    // newBox.style.backgroundColor = getRandomHexColor();
-    // arr.push(newBox)
-    // size += 10;
-
-    // 2 варіант
-
-    boxes.insertAdjacentHTML("beforeend", `<div style="width: ${size}px; height: ${size}px; background-color: ${getRandomHexColor()}"></div>`);
+    const newBox = document.createElement('div');
+    newBox.style.width = `${size}px`;
+    newBox.style.height = `${size}px`;
+    newBox.style.backgroundColor = getRandomHexColor();
+    arr.push(newBox)
     size += 10;
+
+    // 2 варіант (не одна операція)
+    // boxes.insertAdjacentHTML("beforeend", `<div style="width: ${size}px; height: ${size}px; background-color: ${getRandomHexColor()}"></div>`);
+    // size += 10;
   }
 
+  boxes.append(...arr)
 }
 
 function getRandomHexColor() {
